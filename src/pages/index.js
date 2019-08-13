@@ -1,21 +1,60 @@
 import React from "react"
 import { Link } from "gatsby"
+import Typed from "typed.js"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import {
+  faLinkedin,
+  faGithub,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons"
+
+import "../styles/home.css"
+
+class IndexPage extends React.Component {
+  componentDidMount() {
+    var options = {
+      strings: [
+        "Hi, I'm <span class='glitch' data-text='maikmacs'>maikmacs</span>.<br />I'm a Software engineer.",
+      ],
+      showCursor: false,
+      typeSpeed: 40,
+    }
+
+    new Typed("#home-text", options)
+  }
+
+  render() {
+    return (
+      <Layout>
+        <SEO title="Home" />
+        <div id="window">
+          <div id="home-text"></div>
+          <div id="icons">
+            <a
+              href="https://linkedin.com/in/miguel-angel-contreras-sanchez-a1990674/"
+              target="_blank"
+            >
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+            <a href="https://github.com/maikmacs" target="_blank">
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+            <a href="https://www.instagram.com/maikmacs/" target="_blank">
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
+            <a href="mailto:hola@maikmacs.com?subject=Hola Maik!">
+              <FontAwesomeIcon icon={faEnvelope} />
+            </a>
+          </div>
+        </div>
+      </Layout>
+    )
+  }
+}
 
 export default IndexPage
