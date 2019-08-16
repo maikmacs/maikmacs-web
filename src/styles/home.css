@@ -35,6 +35,14 @@
     color: #3c3c3c;
   }
 
+.show-icons.false{
+  display: none;
+}
+
+.show-icons.true{
+  display: block;
+}
+
 .glitch {
   position: relative;
   color: #3e57a0;

@@ -16,6 +16,8 @@ import {
 import "../styles/home.css"
 
 class IndexPage extends React.Component {
+  state = { showicons: false }
+
   componentDidMount() {
     var options = {
       strings: [
@@ -23,6 +25,11 @@ class IndexPage extends React.Component {
       ],
       showCursor: false,
       typeSpeed: 40,
+      onComplete: self => {
+        this.setState({
+          showicons: true,
+        })
+      },
     }
 
     new Typed("#home-text", options)
@@ -34,7 +41,7 @@ class IndexPage extends React.Component {
         <SEO title="Home" />
         <div id="window">
           <div id="home-text"></div>
-          <div id="icons">
+          <div id="icons" className={`show-icons ${this.state.showicons}`}>
             <a
               href="https://linkedin.com/in/miguel-angel-contreras-sanchez-a1990674/"
               target="_blank"
